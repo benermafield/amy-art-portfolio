@@ -1,0 +1,16 @@
+{%- comment -%}
+  Design trial panel — only rendered when theme_switcher: true in _config.yml.
+{%- endcomment -%}
+<div class="trial-panel" data-trial-panel>
+  <button class="trial-toggle" type="button" aria-expanded="false" aria-controls="trial-options">Design</button>
+  <div class="trial-options" id="trial-options" hidden>
+    <p class="trial-label">Theme</p>
+    <div class="trial-choices" role="radiogroup" aria-label="Theme">
+      <button type="button" role="radio" data-set-theme="gallery">Gallery white</button>
+      <button type="button" role="radio" data-set-theme="dark">Dark</button>
+      <button type="button" role="radio" data-set-theme="warm">Warm editorial</button>
+      <button type="button" role="radio" data-set-theme="auto">Light + dark auto</button>
+    </div>
+    <p class="trial-note">To keep one, set <code>theme</code> in <code>_config.yml</code>.</p>
+  </div>
+</div>

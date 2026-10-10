@@ -1,0 +1,61 @@
+# ------------------------------------------------------------------
+# Site settings — edit these to make the site yours
+# ------------------------------------------------------------------
+title: Amy Placeholder
+tagline: Painter & printmaker
+description: Portfolio of Amy Placeholder — painting, drawing and printmaking.
+
+# GitHub Pages serves this repo at /amy-art-portfolio.
+# If you add a custom domain later, set baseurl to "".
+url: "https://benermafield.github.io"
+baseurl: "/amy-art-portfolio"
+
+artist:
+  name: Amy Placeholder
+  location: London, UK
+  email: hello@example.com
+  social:
+    - label: Instagram
+      url: https://instagram.com/
+    - label: Bluesky
+      url: https://bsky.app/
+
+# ------------------------------------------------------------------
+# Look & feel
+# ------------------------------------------------------------------
+# Default theme. One of: gallery | dark | warm | auto
+#   gallery — off-white, clean sans-serif
+#   dark    — near-black, artwork-forward
+#   warm    — cream paper tone, editorial serif
+#   auto    — gallery, switching to dark with the visitor's OS setting
+theme: gallery
+
+# Default gallery layout. One of: masonry | single
+# (Visitors can switch with the toggle above the gallery.)
+gallery_layout: masonry
+
+# Show the floating "Design trial" panel for trying themes.
+# Set to false once you've picked a theme.
+theme_switcher: true
+
+# ------------------------------------------------------------------
+# Content — each artwork is a Markdown file in _artworks/
+# ------------------------------------------------------------------
+collections:
+  artworks:
+    output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: artworks
+    values:
+      layout: artwork
+
+markdown: kramdown
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

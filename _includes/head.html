@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+{% if page.image %}<meta property="og:image" content="{{ page.image }}">{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+{%- comment -%}
+  Set theme + layout before first paint to avoid a flash.
+  Saved trial choices only apply while the trial panel is enabled.
+{%- endcomment %}
+<script>
+  (function () {
+    var d = document.documentElement;
+    var theme = "{{ site.theme | default: 'gallery' }}";
+    var layout = "{{ site.gallery_layout | default: 'masonry' }}";
+    try {
+      {% if site.theme_switcher %}theme = localStorage.getItem("portfolio-theme") || theme;{% endif %}
+      layout = localStorage.getItem("portfolio-layout") || layout;
+    } catch (e) {}
+    d.setAttribute("data-theme", theme);
+    d.setAttribute("data-layout", layout);
+  })();
+</script>
