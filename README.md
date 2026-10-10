@@ -41,7 +41,7 @@ A **Design** button in the bottom-right corner switches between four themes:
 | `warm`    | Cream paper tone, editorial serif                |
 | `auto`    | Gallery white, switching to dark with the device |
 
-Once you've chosen one, set `theme:` in `_config.yml` and set `theme_switcher: false` to hide the panel. Visitors always see the gallery layout toggle. Its default is `gallery_layout:`.
+Once you've chosen one, set `site_theme:` in `_config.yml` and set `theme_switcher: false` to hide the panel. Visitors always see the gallery layout toggle. Its default is `gallery_layout:`.
 
 Artist name, email, location and social links are also in `_config.yml`.
 

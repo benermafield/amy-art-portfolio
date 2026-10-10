@@ -19,7 +19,7 @@
 <script>
   (function () {
     var d = document.documentElement;
-    var theme = "{{ site.theme | default: 'gallery' }}";
+    var theme = "{{ site.site_theme | default: 'gallery' }}";
     var layout = "{{ site.gallery_layout | default: 'masonry' }}";
     try {
       {% if site.theme_switcher %}theme = localStorage.getItem("portfolio-theme") || theme;{% endif %}
