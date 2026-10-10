@@ -1,0 +1,145 @@
+# Pages CMS configuration — https://pagescms.org/docs/
+# Defines the editing forms the artist sees at https://app.pagescms.org
+
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  # ----------------------------------------------------------------
+  # Artworks — one Markdown file per piece in _artworks/
+  # ----------------------------------------------------------------
+  - name: artworks
+    label: Artworks
+    type: collection
+    path: _artworks
+    filename: "{primary}.md"
+    view:
+      fields: [title, year, series, pinned]
+      primary: title
+      sort: [year, title]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: image
+        label: Image
+        type: image
+        required: true
+        description: JPG or PNG, around 2000px on the longest side.
+      - name: year
+        label: Year
+        type: number
+        required: true
+      - name: series
+        label: Series
+        type: select
+        description: Used for the filter links above the gallery.
+        options:
+          values: [Paintings, Drawings, Prints]
+      - name: medium
+        label: Medium
+        type: string
+        description: e.g. Oil on linen
+      - name: dimensions
+        label: Dimensions
+        type: string
+        description: e.g. 80 × 100 cm
+      - name: pinned
+        label: Pin to top of gallery
+        type: boolean
+        default: false
+      - name: width
+        label: Image width (px)
+        type: number
+        description: Optional. Helps the gallery lay out smoothly while images load.
+      - name: height
+        label: Image height (px)
+        type: number
+        description: Optional. Helps the gallery lay out smoothly while images load.
+      - name: body
+        label: Description
+        type: rich-text
+
+  # ----------------------------------------------------------------
+  # Pages
+  # ----------------------------------------------------------------
+  - name: about
+    label: About page
+    type: file
+    path: about.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: page }
+      - { name: permalink, type: string, hidden: true, default: /about/ }
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: portrait
+        label: Portrait photo
+        type: image
+      - name: body
+        label: Text
+        type: rich-text
+        description: Bio, exhibitions, education, etc.
+
+  - name: contact
+    label: Contact page
+    type: file
+    path: contact.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: contact }
+      - { name: permalink, type: string, hidden: true, default: /contact/ }
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: body
+        label: Intro text
+        type: rich-text
+        description: Your email, social links and location are added below this automatically (edit them in Site settings).
+
+  # ----------------------------------------------------------------
+  # Site settings
+  # ----------------------------------------------------------------
+  - name: settings
+    label: Site settings
+    type: file
+    path: _data/settings.yml
+    fields:
+      - name: name
+        label: Artist name
+        type: string
+        required: true
+        description: Shown at the top of every page.
+      - name: tagline
+        label: Tagline
+        type: string
+        description: e.g. Painter & printmaker
+      - name: description
+        label: Site description
+        type: text
+        description: Short summary used by search engines and link previews.
+      - name: location
+        label: Location
+        type: string
+      - name: email
+        label: Contact email
+        type: string
+      - name: social
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Name
+            type: string
+            description: e.g. Instagram
+          - name: url
+            label: Link
+            type: string
+            description: Full address, starting https://

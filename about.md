@@ -2,9 +2,8 @@
 layout: page
 title: About
 permalink: /about/
+portrait: https://placehold.co/600x750/d6d1c4/6b665a?text=Portrait&font=playfair-display
 ---
-
-<img class="portrait" src="https://placehold.co/600x750/d6d1c4/6b665a?text=Portrait&font=playfair-display" alt="Portrait of Amy Placeholder" width="600" height="750">
 
 Amy Placeholder is a painter and printmaker based in London. Her work explores coastlines, weather and the slow change of familiar places, moving between oil painting, drawing and traditional print processes.
 

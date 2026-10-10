@@ -1,24 +1,13 @@
 # ------------------------------------------------------------------
-# Site settings — edit these to make the site yours
+# Site settings
+# The artist's name, bio text, email and social links live in
+# _data/settings.yml (editable through Pages CMS).
 # ------------------------------------------------------------------
-title: Amy Placeholder
-tagline: Painter & printmaker
-description: Portfolio of Amy Placeholder — painting, drawing and printmaking.
 
 # GitHub Pages serves this repo at /amy-art-portfolio.
 # If you add a custom domain later, set baseurl to "".
 url: "https://benermafield.github.io"
 baseurl: "/amy-art-portfolio"
-
-artist:
-  name: Amy Placeholder
-  location: London, UK
-  email: hello@example.com
-  social:
-    - label: Instagram
-      url: https://instagram.com/
-    - label: Bluesky
-      url: https://bsky.app/
 
 # ------------------------------------------------------------------
 # Look & feel
@@ -40,6 +29,7 @@ theme_switcher: true
 
 # ------------------------------------------------------------------
 # Content — each artwork is a Markdown file in _artworks/
+# (edited through Pages CMS, see .pages.yml)
 # ------------------------------------------------------------------
 collections:
   artworks:

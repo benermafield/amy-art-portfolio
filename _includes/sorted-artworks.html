@@ -1,0 +1,11 @@
+{%- comment -%}
+  Sets `works`: pinned artworks first, then newest year first,
+  then alphabetical by title within each year.
+{%- endcomment -%}
+{%- assign works = site.artworks | where_exp: "w", "w.pinned == true" | sort: "title" -%}
+{%- assign unpinned = site.artworks | where_exp: "w", "w.pinned != true" -%}
+{%- assign years = unpinned | group_by: "year" | sort: "name" | reverse -%}
+{%- for group in years -%}
+  {%- assign in_year = group.items | sort: "title" -%}
+  {%- assign works = works | concat: in_year -%}
+{%- endfor -%}

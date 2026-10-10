@@ -1,0 +1,19 @@
+---
+layout: page
+---
+{{ content }}
+
+{%- assign settings = site.data.settings %}
+{% if settings.email %}
+<p class="contact-email"><a href="mailto:{{ settings.email }}">{{ settings.email }}</a></p>
+{% endif %}
+
+{% if settings.social.size > 0 %}
+<ul class="contact-links">
+  {%- for link in settings.social %}
+  <li><a href="{{ link.url }}" rel="noopener">{{ link.label }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
+
+{% if settings.location %}<p class="muted">Based in {{ settings.location }}.</p>{% endif %}

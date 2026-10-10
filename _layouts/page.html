@@ -3,6 +3,9 @@ layout: default
 ---
 <article class="page">
   <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.portrait %}
+  <img class="portrait" src="{% include image-url.html src=page.portrait %}" alt="Portrait of {{ site.data.settings.name }}">
+  {% endif %}
   <div class="prose">
     {{ content }}
   </div>

@@ -1,0 +1,32 @@
+# Builds the site with the same Jekyll version GitHub Pages uses,
+# so problems show up on the pull request instead of after merging.
+name: Build check
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build
+        run: bundle exec jekyll build --trace --baseurl /amy-art-portfolio
+
+      - name: Sanity-check output
+        run: |
+          set -e
+          count=$(ls _artworks/*.md | wc -l)
+          items=$(grep -o 'class="gallery-item"' _site/index.html | wc -l)
+          echo "artworks: $count, gallery items: $items"
+          test "$count" -eq "$items"
+          test -f _site/about/index.html
+          grep -q 'class="contact-email"' _site/contact/index.html
+          for f in _artworks/*.md; do test -f "_site/work/$(basename "$f" .md)/index.html"; done
