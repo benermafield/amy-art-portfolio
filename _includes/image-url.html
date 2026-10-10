@@ -1,0 +1,5 @@
+{%- comment -%}
+  Outputs an image URL: full URLs (e.g. placehold.co) are used as-is,
+  uploaded images (/assets/images/…) get the site's baseurl added.
+{%- endcomment -%}
+{%- if include.src contains "://" -%}{{ include.src }}{%- else -%}{{ include.src | relative_url }}{%- endif -%}

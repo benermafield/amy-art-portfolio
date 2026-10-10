@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
-{%- assign works = site.artworks | sort: "order" -%}
+{%- include sorted-artworks.html -%}
 {%- assign series_list = works | map: "series" | compact | uniq -%}
 
-<h1 class="visually-hidden">{{ site.title }} — Work</h1>
+<h1 class="visually-hidden">{{ site.data.settings.name }} — Work</h1>
 
 <div class="gallery-controls">
   {% if series_list.size > 1 %}
@@ -30,8 +30,8 @@ layout: default
   {%- for work in works %}
   <li class="gallery-item" data-series="{{ work.series | slugify }}">
     <a href="{{ work.url | relative_url }}">
-      <img src="{{ work.image }}" alt="{{ work.title }}, {{ work.year }}"
-           width="{{ work.width }}" height="{{ work.height }}"
+      <img src="{% include image-url.html src=work.image %}" alt="{{ work.title }}, {{ work.year }}"
+           {% if work.width and work.height %}width="{{ work.width }}" height="{{ work.height }}"{% endif %}
            {% if forloop.index > 4 %}loading="lazy"{% endif %} decoding="async">
       <span class="gallery-caption">
         <span class="gallery-caption-title">{{ work.title }}</span>

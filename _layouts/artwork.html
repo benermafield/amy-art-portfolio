@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{%- assign works = site.artworks | sort: "order" -%}
+{%- include sorted-artworks.html -%}
 {%- for w in works -%}
   {%- if w.url == page.url -%}
     {%- assign prev_index = forloop.index0 | minus: 1 -%}
@@ -13,8 +13,8 @@ layout: default
 
 <article class="artwork">
   <figure class="artwork-figure">
-    <img src="{{ page.image }}" alt="{{ page.title }}, {{ page.year }}"
-         width="{{ page.width }}" height="{{ page.height }}">
+    <img src="{% include image-url.html src=page.image %}" alt="{{ page.title }}, {{ page.year }}"
+         {% if page.width and page.height %}width="{{ page.width }}" height="{{ page.height }}"{% endif %}>
   </figure>
 
   <div class="artwork-info">
