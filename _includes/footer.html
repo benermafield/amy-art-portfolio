@@ -1,0 +1,8 @@
+<footer class="site-footer">
+  <span>&copy; {{ site.time | date: '%Y' }} {{ site.artist.name }}</span>
+  <span class="footer-links">
+    {%- for link in site.artist.social %}
+    <a href="{{ link.url }}" rel="noopener">{{ link.label }}</a>
+    {%- endfor %}
+  </span>
+</footer>

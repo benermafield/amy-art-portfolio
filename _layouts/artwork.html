@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{%- assign works = site.artworks | sort: "order" -%}
+{%- for w in works -%}
+  {%- if w.url == page.url -%}
+    {%- assign prev_index = forloop.index0 | minus: 1 -%}
+    {%- assign next_index = forloop.index0 | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if prev_index >= 0 -%}{%- assign prev = works[prev_index] -%}{%- endif -%}
+{%- assign next = works[next_index] -%}
+
+<article class="artwork">
+  <figure class="artwork-figure">
+    <img src="{{ page.image }}" alt="{{ page.title }}, {{ page.year }}"
+         width="{{ page.width }}" height="{{ page.height }}">
+  </figure>
+
+  <div class="artwork-info">
+    <h1 class="artwork-title">{{ page.title }}<span class="artwork-year">, {{ page.year }}</span></h1>
+    <dl class="artwork-meta">
+      {% if page.medium %}<dt>Medium</dt><dd>{{ page.medium }}</dd>{% endif %}
+      {% if page.dimensions %}<dt>Size</dt><dd>{{ page.dimensions }}</dd>{% endif %}
+      {% if page.series %}<dt>Series</dt><dd>{{ page.series }}</dd>{% endif %}
+    </dl>
+    <div class="prose">{{ content }}</div>
+  </div>
+
+  <nav class="artwork-nav" aria-label="Artworks">
+    {% if prev %}<a href="{{ prev.url | relative_url }}" rel="prev" data-key="ArrowLeft">&larr; {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+    <a href="{{ '/' | relative_url }}" class="artwork-nav-all">All work</a>
+    {% if next %}<a href="{{ next.url | relative_url }}" rel="next" data-key="ArrowRight">{{ next.title }} &rarr;</a>{% else %}<span></span>{% endif %}
+  </nav>
+</article>
