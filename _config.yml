@@ -23,12 +23,12 @@ artist:
 # ------------------------------------------------------------------
 # Look & feel
 # ------------------------------------------------------------------
-# Default theme. One of: gallery | dark | warm | auto
+# Default theme (not "theme:", which Jekyll reserves for theme gems). One of: gallery | dark | warm | auto
 #   gallery — off-white, clean sans-serif
 #   dark    — near-black, artwork-forward
 #   warm    — cream paper tone, editorial serif
 #   auto    — gallery, switching to dark with the visitor's OS setting
-theme: gallery
+site_theme: gallery
 
 # Default gallery layout. One of: masonry | single
 # (Visitors can switch with the toggle above the gallery.)
